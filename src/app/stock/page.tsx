@@ -1,6 +1,9 @@
+// Stock list + item details — "/stock"
+// TODO: load items from DB, save received stock
+
 "use client";
 
-import { 
+import {
   Menu, LayoutDashboard, Package, ShoppingCart, Users, TrendingUp, RotateCcw, 
   Upload, Plus, Search, Filter, Pencil, Trash2, Check, ArrowUpRight 
 } from "lucide-react";
@@ -8,9 +11,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function StockPage() {
+  // Selected row (SKU)
   const [activeRow, setActiveRow] = useState("GUL-001");
 
-  // Mock data based on the screenshot
+  // Sample items (id = SKU, reorder = restock level)
   const stockItems = [
     { id: "BRS-005", name: "Beras Wangi 5kg", category: "Rice & grains", stock: 64, reorder: 20, status: "In stock", updated: "9:12 AM" },
     { id: "GUL-001", name: "Gula Pasir 1kg", category: "Baking", stock: 12, reorder: 30, status: "Critical", updated: "8:40 AM" },
@@ -23,6 +27,7 @@ export default function StockPage() {
     { id: "SRD-425", name: "Sardin Ayam Brand", category: "Canned food", stock: 52, reorder: 24, status: "In stock", updated: "14 Oct" },
   ];
 
+  // Status → coloured pill
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "Critical":
@@ -193,7 +198,7 @@ export default function StockPage() {
           </div>
         </div>
 
-        {/* Right Column: Item Details Panel */}
+        {/* Item details (hard-coded, ignores activeRow) */}
         <div className="w-[360px] bg-white flex flex-col overflow-y-auto shrink-0">
           <div className="p-6">
             

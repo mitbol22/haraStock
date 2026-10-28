@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# haraStock
 
-## Getting Started
+Stock, sales, forecasts and supplier orders for small shops, in one place.
+Built with [Next.js](https://nextjs.org) (App Router), React, TypeScript and Tailwind CSS.
 
-First, run the development server:
+> Status: UI only. All pages use hard-coded sample data — the database is not connected yet.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install                  # 1. install packages (first time only)
+cp .env.example .env.local   # 2. create your env file, then fill in DATABASE_URL
+npm run dev                  # 3. start the app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Pages reload automatically when you save a file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Each folder inside `src/app/` is one URL. The `page.tsx` inside it is what shows on screen.
 
-## Learn More
+| URL          | File                         | Who uses it | What it shows                                   |
+| ------------ | ---------------------------- | ----------- | ----------------------------------------------- |
+| `/`          | `src/app/page.tsx`           | Everyone    | Sign in / Register                              |
+| `/dashboard` | `src/app/dashboard/page.tsx` | Manager     | Summary cards, sales chart, items needing action |
+| `/stock`     | `src/app/stock/page.tsx`     | Staff       | Stock table + record received stock             |
+| `/supplier`  | `src/app/supplier/page.tsx`  | Supplier    | Partner shop stock, restock requests, promos    |
 
-To learn more about Next.js, take a look at the following resources:
+Other files:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/layout.tsx` — wraps every page (fonts, `<html>`, `<body>`, browser tab title)
+- `src/app/globals.css` — global styles (Tailwind is imported here)
+- `public/` — images/icons served as-is (e.g. `/next.svg`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment variables
 
-## Deploy on Vercel
+- `.env.example` — template, **committed** to git. Lists every variable with fake values.
+- `.env.local` — your real values, **not committed** (ignored by `.gitignore`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable       | Used for                                   |
+| -------------- | ------------------------------------------ |
+| `DATABASE_URL` | Connection string to the database (server only) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Only variables starting with `NEXT_PUBLIC_` are visible in the browser, so never put secrets in one.
+Restart `npm run dev` after changing `.env.local`.
+
+## Scripts
+
+| Command         | What it does                     |
+| --------------- | -------------------------------- |
+| `npm run dev`   | Start the dev server             |
+| `npm run build` | Build for production             |
+| `npm run start` | Run the production build         |
+| `npm run lint`  | Check the code for common issues |

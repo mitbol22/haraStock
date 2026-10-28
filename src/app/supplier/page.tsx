@@ -1,6 +1,9 @@
+// Supplier overview — "/supplier"
+// TODO: replace sample data with DB
+
 "use client";
 
-import { 
+import {
   Menu, LayoutDashboard, Package, ClipboardList, Tag, 
   Megaphone, ArrowUpRight, AlertTriangle, FileText, Check, Plus, Eye
 } from "lucide-react";
@@ -124,6 +127,7 @@ export default function SupplierOverviewPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#E4E2DB]">
+                    {/* TODO: move rows to an array + .map() */}
                     {/* Row 1 */}
                     <tr className="hover:bg-gray-50">
                       <td className="px-6 py-3 text-gray-900">Kedai Runcit Aina</td>

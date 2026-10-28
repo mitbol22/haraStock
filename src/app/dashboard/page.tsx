@@ -1,3 +1,6 @@
+// Manager dashboard — "/dashboard"
+// TODO: replace sample data with DB
+
 "use client";
 import { useState } from "react";
 import { /*icons*/ } from "lucide-react";
@@ -10,8 +13,10 @@ import {
 
 
 export default function DashboardPage() {
+  // Show/hide tip banner
   const [showTip, setShowTip] = useState(true);
-    // Mock data for the chart bars (percentages)
+
+  // Daily sales bar heights (%)
   const chartData = [30, 40, 45, 38, 55, 65, 32, 28, 48, 50, 58, 78, 42, 35, 52, 62, 68, 45, 85];
 
   return (
@@ -141,7 +146,7 @@ export default function DashboardPage() {
                   <h2 className="text-lg font-bold text-gray-900">Sales this month</h2>
                   <p className="text-xs text-gray-500">Daily revenue, 1 to 19 October - RM</p>
                 </div>
-                {/* Toggles */}
+                {/* Period toggle (not wired yet) */}
                 <div className="flex rounded-lg bg-gray-100 p-1">
                   <button className="rounded-md bg-white px-3 py-1 text-xs font-medium shadow-sm">Daily</button>
                   <button className="rounded-md px-3 py-1 text-xs font-medium text-gray-500 hover:text-black">Weekly</button>
@@ -159,7 +164,7 @@ export default function DashboardPage() {
                   <span>0</span>
                 </div>
                 
-                {/* Bars */}
+                {/* Bars — last one is today */}
                 <div className="ml-8 h-64 flex items-end justify-between gap-1 border-b border-gray-100 pb-2">
                   {chartData.map((height, i) => (
                     <div key={i} className="relative group w-full flex justify-center">

@@ -1,3 +1,6 @@
+// Login / Register — "/"
+// TODO: connect to DB, redirect by role
+
 "use client";
 
 import { Mail, LockKeyhole, User, ShieldCheck, Check } from "lucide-react";
@@ -5,7 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function LoginPage() {
-  // Simple state to toggle between Sign In and Register tabs
+  // true = Sign in, false = Register
   const [isLogin, setIsLogin] = useState(true);
 
   return (
@@ -13,7 +16,7 @@ export default function LoginPage() {
       {/* ================= LEFT PANEL (Hidden on mobile) ================= */}
       <div className="hidden lg:flex lg:w-[45%] flex-col bg-[#556B50] p-12 text-white">
         
-        {/* Logo Area (Box removed!) */}
+        {/* Logo */}
         <div className="text-xl font-bold">
           haraStock
         </div>
@@ -21,7 +24,7 @@ export default function LoginPage() {
         {/* This wrapper pushes everything to the bottom */}
         <div className="mt-auto flex flex-col gap-12 pb-4">
           
-          {/* Decorative Dashboard Placeholder */}
+          {/* Decoration only */}
           <div className="flex flex-col gap-4 opacity-80 max-w-lg">
             <div className="flex gap-4">
               <div className="h-8 w-1/3 bg-white/20 rounded-md"></div>
@@ -155,7 +158,7 @@ export default function LoginPage() {
               </label>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit (not wired yet) */}
             <button
               type="button"
               className="w-full rounded-lg bg-[#5E7A64] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#4A6B42] focus:outline-none focus:ring-2 focus:ring-[#5E7A64] focus:ring-offset-2"
